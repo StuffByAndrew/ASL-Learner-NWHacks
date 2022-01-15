@@ -1,45 +1,40 @@
-# Material UI Dashboard
+## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
 
-Example: https://material-ui-dashboard-demo.cube.dev
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-Guide: https://material-ui-dashboard.cube.dev
+> Free React Admin Dashboard made with Material-UI components and React.
 
-React Material UI dashboard with Cube.js
+![preview](public/static/preview.png)
 
-## Run Project
+| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
+| ----------------------------------------------------- | :---------------------------------------------------------------- |
+| **7** Demo pages                                      | **42+** demo pages                                                |
+| -                                                     | ✓ Multi-language                                                  |
+| -                                                     | ✓ Dark/Light Mode 🌓                                              |
+| -                                                     | ✓ [More components](https://minimals.cc/components)               |
+| -                                                     | ✓ TypeScript version                                              |
+| -                                                     | ✓ Design files (Figma & Sketch)                                   |
 
-### Setup a Demo Backend
+## Page demo
 
-if you already have Cube.js Backend up and running you can skip this step.
+- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
+- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
+- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
+- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
+- [Login](https://minimal-kit-react.vercel.app/login)
+- [Register](https://minimal-kit-react.vercel.app/register)
+- [Not Found](https://minimal-kit-react.vercel.app/404)
 
-Let's start by setting up a database with some sample data. We'll use PostgresQL and our example e-commerce dataset for this tutorial. You can download and import it by running the following commands.
+## Getting started
 
-```
-$ curl http://cube.dev/downloads/ecom-dump.sql > ecom-dump.sql
-$ createdb ecom
-$ psql --dbname ecom -f ecom-dump.sql
-```
+- Recommended `node js 14+` and `npm 6+`
+- Install dependencies: `npm install` or `yarn install`
+- Start the server: `npm run start` or `yarn start`
 
-Cube.js uses environment variables for configuration. It uses environment variables starting with `CUBEJS_`. To configure the connection to our database, we need to specify the DB type and name. In the Cube.js project folder create the .env file with the following:
+## License
 
-```
-CUBEJS_DB_NAME=ecom
-CUBEJS_DB_TYPE=postgres
-CUBEJS_API_SECRET=SECRET
-```
+Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
 
-### Backend run
-To start frontend application use this commands
-```
-$ yarn
-$ yarn dev
-```
+## Contact us
 
-### Frontend run
-To start frontend application use this commands
-```
-$ cd dashboard-app
-$ yarn
-$ yarn start
-```
-
+Email Us: support@minimals.cc
