@@ -1,8 +1,8 @@
 # Material UI Dashboard
 
-Example: https://material-ui-dashboard-demo.cube.dev
+Example: https://material-ui-dashboard-demo.cube.dev/
 
-Guide: https://material-ui-dashboard.cube.dev
+Guide: https://cube.dev/blog/material-ui-dashboard/
 
 React Material UI dashboard with Cube.js
 
@@ -29,17 +29,20 @@ CUBEJS_API_SECRET=SECRET
 ```
 
 ### Backend run
+
 To start frontend application use this commands
+
 ```
 $ yarn
 $ yarn dev
 ```
 
 ### Frontend run
+
 To start frontend application use this commands
+
 ```
 $ cd dashboard-app
 $ yarn
 $ yarn start
 ```
-
