@@ -21,6 +21,7 @@ import {
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
+
 export default function DashboardApp() {
   return (
     <Page title="Learn">
@@ -61,9 +62,6 @@ export default function DashboardApp() {
                           <span role="img" aria-label="wave">👋</span>
                         </button>
                       </a>
-                    </div>
-                    <div>
-                      <a href="blank.html">click here</a>
                     </div>
                  
                     

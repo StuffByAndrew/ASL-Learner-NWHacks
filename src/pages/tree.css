@@ -51,3 +51,7 @@
 .emoji:hover {
   cursor: default;
 }
+
+.map_text {
+  font-size: 30px;
+}
