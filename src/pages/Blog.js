@@ -25,13 +25,14 @@ export default function Blog() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Blog
+            Resources
           </Typography>
           <Button
             variant="contained"
             component={RouterLink}
             to="#"
             startIcon={<Icon icon={plusFill} />}
+            style={{background: 'linear-gradient(90deg, rgba(248,187,161,1) 0%, rgba(244,146,240,1) 100%)'}}
           >
             New Post
           </Button>

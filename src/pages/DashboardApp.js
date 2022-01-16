@@ -23,7 +23,7 @@ import {
 
 export default function DashboardApp() {
   return (
-    <Page title="Dashboard | Minimal-UI">
+    <Page title="Learn">
       <Container maxWidth="xl" >
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">Hi, Welcome back</Typography>
@@ -41,6 +41,7 @@ export default function DashboardApp() {
           <Grid item xs={12} sm={6} md={3}>
             <AppBugReports />
           </Grid> */}
+<<<<<<< HEAD
 
           <Grid item xs={4} md={4} lg={4}>
             <AppWebsiteVisits />
@@ -63,11 +64,17 @@ export default function DashboardApp() {
                 </div>
             </Box>
         </Card>
+=======
+          <Grid item xs={8}>
+            <div/>
+>>>>>>> 22079d88fe67c341b08f4febd2fb21d5c8c341d9
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={4}>
             <AppCurrentVisits />
-          </Grid> 
+            <div style={{height:20}}/>
+            <AppWebsiteVisits />
+          </Grid>
 
           {/* <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates />

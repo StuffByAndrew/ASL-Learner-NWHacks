@@ -9,7 +9,7 @@ import { BaseOptionChart } from '../../charts';
 
 const CHART_DATA = [
   {
-    name: 'Signs practiced',
+    name: 'Signs Practiced',
     type: 'line',
     data: [44, 55, 41, 67, 22, 43, 21]
   }
@@ -17,30 +17,9 @@ const CHART_DATA = [
 
 export default function AppWebsiteVisits() {
   const chartOptions = merge(BaseOptionChart(), {
-    stroke: { width: [0], colors: ['#f8bba1', '#f492f0']},
+    // stroke: { width: [0, 2, 3] },
     // plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: {
-      type: 'gradient',
-      gradient: {
-        shade: 'dark',
-        gradientToColors: ['#f492f0'],
-        shadeIntensity: 1,
-        type: 'horizontal', 
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [0, 100],
-        colorStops: [
-          {
-              offset: 10,
-              color: '#f8bba1',
-              opacity: 0.35
-          },
-          {
-              offset: 55,
-              color: '#f492f0',
-              opacity: 1
-          }]
-      }},
+    // fill: { type: 'gradient' },
     // labels: [
     //   '01/01/2003',
     //   '02/01/2003',
@@ -57,11 +36,11 @@ export default function AppWebsiteVisits() {
     // xaxis: { type: 'datetime' },
     tooltip: {
       shared: true,
-      intersect: false,
+      intersect: true,
       y: {
         formatter: (y) => {
           if (typeof y !== 'undefined') {
-            return `${y.toFixed(0)} signs`;
+            return `${y.toFixed(0)} visits`;
           }
           return y;
         }
