@@ -7,8 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
   </head>
+  <!-- ######################################################################################### -->
   <body>
+<<<<<<< HEAD
 	<div>Teachable Machine Image Model</div>
 <button type="button" onclick="init()">Start</button>
 <div></div>
@@ -17,16 +24,32 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
+=======
+    <div class=sidebar></div>
+    <div class="container">
+        <video class="input_video"></video>
+        <canvas class="output_canvas"></canvas>
+    </div>
+    <!-- <button type="button" onclick="init()">Start</button> -->
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+>>>>>>> fba00cbcea708c482bf6073a7de8f28c0e7f4a50
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
     // the link to your model provided by Teachable Machine export panel
     const URL = "https://storage.googleapis.com/tm-model/Pn5IlkF1b/";
 
+    const threshold = 0.25;
     let model, webcam, labelContainer, maxPredictions;
     let max = {};
-    max.name = "Empty";
-    max.val = "0.1";
+    max.name = "None";
+    max.val = threshold;
+    max.count = 0
+    max.prev = "None"
 
     // Load the image model and setup the webcam
     async function init() {
@@ -48,13 +71,13 @@
         window.requestAnimationFrame(loop);
 
         // append elements to the DOM
-        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        // document.getElementById("webcam-container").appendChild(webcam.canvas);
         labelContainer = document.getElementById("label-container");
         for (let i = 0; i < maxPredictions; i++) { // and class labels
             labelContainer.appendChild(document.createElement("div"));
         }
     }
-
+    window.addEventListener("load", init)
     async function loop() {
         webcam.update(); // update the webcam frame
         await predict();
@@ -65,21 +88,76 @@
     async function predict() {
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
-        // console.log(labelContainer.childNodes);
+        //console.log(labelContainer.childNodes);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
 
-        for (let j = 0; j < prediction.length; j++) {
-            if (prediction[j] > max.val) {
-                max.val = prediction[j];
-                max.name = prediction.className;
+        for (let j = 0; j < maxPredictions; j++) {
+            if (prediction[j].probability > max.val) {
+                max.val = prediction[j].probability;
+                max.name = prediction[j].className;
             }
         }
+<<<<<<< HEAD
 
+=======
+        if (max.name === max.prev) {
+            max.count++;
+        } else {
+            max.count = 0;
+        }
+        if (max.name !== "None" && max.count > 20) {
+            console.log(max.name)
+        }
+
+        max.prev = max.name
+        max.name = "None";
+        max.val = threshold;
+>>>>>>> fba00cbcea708c482bf6073a7de8f28c0e7f4a50
     }
-</script>
+    </script>
+    <script type="module">
+        const videoElement = document.getElementsByClassName('input_video')[0];
+        const canvasElement = document.getElementsByClassName('output_canvas')[0];
+        const canvasCtx = canvasElement.getContext('2d');
+        
+        function onResults(results) {
+          canvasCtx.save();
+          canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+          canvasCtx.drawImage(
+              results.image, 0, 0, canvasElement.width, canvasElement.height);
+          if (results.multiHandLandmarks) {
+            for (const landmarks of results.multiHandLandmarks) {
+              drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS,
+                             {color: '#eca0ff'/*"#f9c58d"*/, lineWidth: 1});
+              //drawLandmarks(canvasCtx, landmarks, {color: '#f492f0', lineWidth: 1});
+            }
+          }
+          canvasCtx.restore();
+        }
+        
+        const hands = new Hands({locateFile: (file) => {
+          return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+        }});
+        hands.setOptions({
+          maxNumHands: 2,
+          modelComplexity: 1,
+          minDetectionConfidence: 0.5,
+          minTrackingConfidence: 0.5
+        });
+        hands.onResults(onResults);
+        
+        const camera = new Camera(videoElement, {
+          onFrame: async () => {
+            await hands.send({image: videoElement});
+          },
+          width: 1280,
+          height: 720
+        });
+        camera.start();
+        </script>
   </body>
 </html>
