@@ -133,9 +133,6 @@ export default function DashboardApp() {
                         </button>
                       </a>
                     </div>
-                    <div>
-                      <a href="blank.html">click here</a>
-                    </div>
                     <div className="spacer">
                     <button className="btn">
                     <span role="img" aria-label="person">🧍</span>
