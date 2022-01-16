@@ -80,7 +80,6 @@ export default function DashboardApp() {
         // for (let i = 0; i < maxPredictions; i++) { // and class labels
         //     labelContainer.appendChild(document.createElement("div"));
         // }
-    }
 
     // async function loop() {
     //     webcam.update(); // update the webcam frame
