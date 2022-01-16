@@ -80,7 +80,6 @@ export default function DashboardApp() {
         // for (let i = 0; i < maxPredictions; i++) { // and class labels
         //     labelContainer.appendChild(document.createElement("div"));
         // }
-    }
 
     // async function loop() {
     //     webcam.update(); // update the webcam frame
@@ -133,9 +132,6 @@ export default function DashboardApp() {
                           <span role="img" aria-label="wave">👋</span>
                         </button>
                       </a>
-                    </div>
-                    <div>
-                      <a href="blank.html">click here</a>
                     </div>
                     <div className="spacer">
                     <button className="btn">
@@ -208,4 +204,4 @@ export default function DashboardApp() {
       </Container>
     </Page>
   );
-}
+};

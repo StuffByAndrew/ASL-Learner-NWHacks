@@ -36,17 +36,17 @@ import MenuPopover from '../../components/MenuPopover';
 const NOTIFICATIONS = [
   {
     id: faker.datatype.uuid(),
-    title: 'Your order is placed',
-    description: 'waiting for shipping',
+    title: 'Earn rewards',
+    description: 'by increasing your streak',
     avatar: null,
-    type: 'order_placed',
+    type: 'streak',
     createdAt: set(new Date(), { hours: 10, minutes: 30 }),
     isUnRead: true
   },
   {
     id: faker.datatype.uuid(),
     title: faker.name.findName(),
-    description: 'answered to your comment on the Minimal',
+    description: 'wants to add you as a friend!',
     avatar: mockImgAvatar(2),
     type: 'friend_interactive',
     createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
@@ -54,28 +54,28 @@ const NOTIFICATIONS = [
   },
   {
     id: faker.datatype.uuid(),
-    title: 'You have new message',
-    description: '5 unread messages',
+    title: 'New articles',
+    description: 'on the Resources page',
     avatar: null,
-    type: 'chat_message',
+    type: 'mail',
     createdAt: sub(new Date(), { days: 1, hours: 3, minutes: 30 }),
     isUnRead: false
   },
   {
     id: faker.datatype.uuid(),
-    title: 'You have new mail',
-    description: 'sent from Guido Padberg',
+    title: 'You have new messages',
+    description: '5 unread messages',
     avatar: null,
-    type: 'mail',
+    type: 'chat_message',
     createdAt: sub(new Date(), { days: 2, hours: 3, minutes: 30 }),
     isUnRead: false
   },
   {
     id: faker.datatype.uuid(),
-    title: 'Delivery processing',
-    description: 'Your order is being shipped',
+    title: 'Improve security',
+    description: 'by verifying your account',
     avatar: null,
-    type: 'order_shipped',
+    type: 'security',
     createdAt: sub(new Date(), { days: 3, hours: 3, minutes: 30 }),
     isUnRead: false
   }
@@ -91,15 +91,15 @@ function renderContent(notification) {
     </Typography>
   );
 
-  if (notification.type === 'order_placed') {
+  if (notification.type === 'streak') {
     return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_package.svg" />,
+      avatar: <img src="/static/icons/fire.svg" />,
       title
     };
   }
-  if (notification.type === 'order_shipped') {
+  if (notification.type === 'security') {
     return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_shipping.svg" />,
+      avatar: <img alt={notification.title} src="/static/icons/lock.svg" />,
       title
     };
   }
