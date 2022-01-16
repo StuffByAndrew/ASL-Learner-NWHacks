@@ -83,6 +83,7 @@
 
         if (guess["letter"] !== ""){
             guess["correct"] = 1;
+            randomElement = letters[Math.floor(Math.random() * letters.length)];
         }
         else {
             guess["correct"] = 0;
@@ -108,6 +109,11 @@
                 max.name = prediction[j].className;
             }
         }
+
+
+        console.log*(guess["correct"]);
+
+        
         if (max.name === max.prev) {
             max.count++;
         } else {
