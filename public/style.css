@@ -1,6 +1,7 @@
 body {
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 video {
     filter: FlipH;
@@ -12,16 +13,18 @@ video {
     filter: FlipH;
     height:100%;
     width: 100%;
+    overflow-x: hidden;
     left: 450px;
     margin:0 auto;
-    position:fixed;
+    position:absolute;
+    top: 0;
     -ms-filter: "FlipH";
     -webkit-transform: scaleX(-1);
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     transform: scaleX(-1);
 }
-/* .cover {
+/* .cover { 
     top: 0;
     margin: 0 auto;
     position: absolute;
@@ -53,5 +56,19 @@ video {
     cursor: default;
 }
 
+#alphabet_container {
+    position: absolute;
+    top: 42%;
+    left: 14.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+#randomE {
+    font-size: 20px;
+    font-family:'Quicksand', sans-serif;
+
+}
 

@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <style>
+    #randomE {
+        font-family: 'Quicksand'; font-size: 20px;
+    }
+    </style>
+    <link rel="stylesheet" href="style.css">\
 
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
@@ -27,6 +33,12 @@
     <!-- <button type="button" onclick="init()">Start</button> -->
     <div id="webcam-container"></div>
     <div id="label-container"></div>
+    <div id="alphabet_container">
+        <img src="https://i.imgur.com/wDqv3FO.png" width="200", height="200">
+        <div id="randomE">
+
+        </div>
+    </div>
     <a class="wrapper" href="/dashboard/app">
     <span class="iconify" data-icon="uil:arrow-circle-left" style="color: white;" data-width="75" data-height="75"></span>
     </a>
@@ -48,14 +60,23 @@
     max.count = 0
     max.prev = "None"
 
-    const letters = ['H', 'I'];
-    const randomElement = letters[Math.floor(Math.random() * letters.length)];
+    const letters = ['H', 'I', 'B', 'V'];
+    let randomElement = letters[Math.floor(Math.random() * letters.length)];
+    console.log(randomElement)
+    document.getElementById("randomE").innerHTML=randomElement;
+  
 
 
-    const guees = {"letter": "None", "correct": 0};
+    const guess = {"letter": "None", "correct": false};
+    var imgDiv = document.getElementById("alphabet_container");
+    var curImg = imgDiv.getElementsByTagName("img");
+    var change = 0;
 
     // Load the image model and setup the webcam
     async function init() {
+
+      curImg.src = "/alphabet/" + randomElement + ".png";
+
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
@@ -82,15 +103,29 @@
     }
     window.addEventListener("load", init)
     async function loop() {
+
+        if (change) {
+          curImg.src = "/alphabet/" + randomElement + ".png";
+          change = 0;
+        }
+
+
         webcam.update(); // update the webcam frame
         await predict();
 
-        if (guess["letter"] !== ""){
+<<<<<<< HEAD
+        if (guess["letter"] !== "None" && guess["letter"] === randomElement){
+            guess["correct"] = false;
+=======
+        if (guess["letter"] !== "" && guess["letter"] === randomElement){
             guess["correct"] = 1;
+>>>>>>> 1eefbc65af257f41b6a8a847b05a950cae9c5f4a
             randomElement = letters[Math.floor(Math.random() * letters.length)];
+            console.log(randomElement);
+            change = 1;
         }
         else {
-            guess["correct"] = 0;
+            guess["correct"] = false;
         }
 
         window.requestAnimationFrame(loop);
@@ -101,11 +136,11 @@
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
         //console.log(labelContainer.childNodes);
-        for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-        }
+        // for (let i = 0; i < maxPredictions; i++) {
+        //     const classPrediction =
+        //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        //     labelContainer.childNodes[i].innerHTML = classPrediction;
+        // }
 
         for (let j = 0; j < maxPredictions; j++) {
             if (prediction[j].probability > max.val) {
@@ -129,7 +164,12 @@
         } else {
             guess["letter"] = "";
         }
-
+        if ((max.name) === randomElement) {
+            console.log("Correct")
+            randomElement = letters[Math.floor(Math.random() * letters.length)];
+            console.log(randomElement)
+            document.getElementById("randomE").innerHTML=randomElement;
+        }
         max.prev = max.name
         max.name = "None";
         max.val = threshold;
