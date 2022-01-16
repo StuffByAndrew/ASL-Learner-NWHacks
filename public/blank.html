@@ -70,7 +70,6 @@
     const guess = {"letter": "None", "correct": false};
     var imgDiv = document.getElementById("alphabet_container");
     var curImg = imgDiv.getElementsByTagName("img");
-    var change = 0;
 
     // Load the image model and setup the webcam
     async function init() {
@@ -110,9 +109,7 @@
         if (guess["letter"] !== "" && guess["letter"] === randomElement){
             guess["correct"] = 1;
             randomElement = letters[Math.floor(Math.random() * letters.length)];
-            curImg[0].src = "/alphabet/" + randomElement + ".png";
             console.log(randomElement);
-            change = 1;
         }
         else {
             guess["correct"] = false;
@@ -159,6 +156,7 @@
             randomElement = letters[Math.floor(Math.random() * letters.length)];
             console.log(randomElement)
             document.getElementById("randomE").innerHTML=randomElement;
+            curImg[0].src = "/alphabet/" + randomElement + ".png";
         }
         max.prev = max.name
         max.name = "None";
