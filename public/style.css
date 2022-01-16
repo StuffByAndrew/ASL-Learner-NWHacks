@@ -53,5 +53,19 @@ video {
     cursor: default;
 }
 
+#alphabet_container {
+    position: absolute;
+    top: 42%;
+    left: 14.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+#randomE {
+    font-size: 20px;
+    font-family:'Quicksand', sans-serif;
+
+}
 
