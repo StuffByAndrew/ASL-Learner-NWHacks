@@ -29,7 +29,7 @@ const ListItemStyle = styled((props) => <ListItemButton disableGutters {...props
       position: 'absolute',
       borderTopLeftRadius: 4,
       borderBottomLeftRadius: 4,
-      backgroundColor: theme.palette.primary.main
+      backgroundColor: '#f492f0'
     }
   })
 );
@@ -60,14 +60,14 @@ function NavItem({ item, active }) {
   };
 
   const activeRootStyle = {
-    color: 'primary.main',
+    color: '#fbfbfb',
     fontWeight: 'fontWeightMedium',
-    bgcolor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
+    background: 'linear-gradient(90deg, rgba(248,187,161,1) 0%, rgba(244,146,240,1) 100%)',
     '&:before': { display: 'block' }
   };
 
   const activeSubStyle = {
-    color: 'text.primary',
+    color: '#ffffff',
     fontWeight: 'fontWeightMedium'
   };
 

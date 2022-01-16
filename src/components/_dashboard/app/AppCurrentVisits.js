@@ -38,21 +38,30 @@ export default function AppCurrentVisits() {
 
   const chartOptions = merge(BaseOptionChart(), {
     colors: [
-      theme.palette.primary.main,
-      theme.palette.info.main,
-      theme.palette.warning.main,
-      theme.palette.error.main
+      '#f8bba1',
+      '#EEEEEE'
     ],
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shade: 'dark',
+        gradientToColors: ['#f492f0'],
+        shadeIntensity: 1,
+        type: 'horizontal', 
+        opacityFrom: 0.3,
+        opacityTo: 1,
+        stops: [0, 100]
+      }},
     labels: ['Completed', 'To Do'],
-    stroke: { colors: [theme.palette.background.paper] },
+    stroke: { width: [0], colors: ['#f8bba1', '#EEEEEE'] },
     legend: { floating: true, horizontalAlign: 'center' },
-    dataLabels: { enabled: false, dropShadow: { enabled: false } },
+    dataLabels: { enabled: false, dropShadow: { enabled: true } },
     tooltip: {
-      fillSeriesColor: false,
+      fillSeriesColor: true,
       y: {
-        formatter: (seriesName) => fNumber(seriesName),
+        formatter: (seriesName) => `${fNumber(seriesName)}%`,
         title: {
-          formatter: (seriesName) => `#${seriesName}`
+          formatter: (seriesName) => `${seriesName}:`
         }
       }
     },
