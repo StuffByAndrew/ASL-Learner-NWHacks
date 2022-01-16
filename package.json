@@ -69,6 +69,7 @@
     "react-scripts": "^4.0.1",
     "react-sweet-progress": "^1.1.2",
     "react-tensorflow": "^2.2.0",
+    "react-webcam": "^6.0.0",
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.5",
     "web-vitals": "^2.1.0",

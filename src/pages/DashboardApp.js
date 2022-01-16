@@ -1,11 +1,12 @@
 import { Link as RouterLink} from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useModel } from 'react-tensorflow';
+import Webcam from "react-webcam";
+import React, { useEffect, useState, useRef } from "react";
+import { useModel } from 'react-tensorflow'
 import './tree.css';
 import * as tf from '@tensorflow/tfjs';
 import * as tmImage from '@teachablemachine/image';
 // material
-import { Box, Grid, Container, Typography, Card, CardHeader, Link } from '@mui/material';
+import { Box, Grid, Container, Typography, Card, CardHeader, Link, Button } from '@mui/material';
 // components
 import Page from '../components/Page';
 import {
@@ -31,6 +32,9 @@ import {
 
 export default function DashboardApp() {
 
+  
+  let model, labelContainer, maxPredictions, webcam;
+
   useEffect(() => {
     const script1 = document.createElement('script');
     const script2 = document.createElement('script');
@@ -50,88 +54,50 @@ export default function DashboardApp() {
     }
   }, []);
 
-  //   // the link to your model provided by Teachable Machine export panel
-  //   // const URL = "../../public/tm-my-image-model/";
-  //   const URL = "https://storage.googleapis.com/tm-model/em1KDmjQF/";
+      // Load the image model and setup the webcam
+      async function init() {
 
-  //   let model, webcam, labelContainer, maxPredictions;
+        // load the model and metadata
+        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        // or files from your local hard drive
+        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        const model = tf.loadLayersModel('https://teachablemachine.withgoogle.com/models/em1KDmjQF/model.json').then( mod => {
+          console.log(mod);
+        });
 
-  //   // Load the image model and setup the webcam
-  //   async function init() {
-  //       const modelURL = URL + "model.json";
-  //       const metadataURL = URL + "metadata.json";
+        // maxPredictions = await model.getTotalClasses();
 
-  //       // load the model and metadata
-  //       // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-  //       // or files from your local hard drive
-  //       // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        // Convenience function to setup a webcam
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
 
-
-  //       model = await tmImage.load(modelURL, metadataURL);
-  //       maxPredictions = model.getTotalClasses();
-
-  //       // Convenience function to setup a webcam
-  //       const flip = true; // whether to flip the webcam
-  //       webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-  //       await webcam.setup(); // request access to the webcam
-  //       await webcam.play();
-  //       window.requestAnimationFrame(loop);
-
-  //       // append elements to the DOM
-  //       document.getElementById("webcam-container").appendChild(webcam.canvas);
-  //       labelContainer = document.getElementById("label-container");
-  //       for (let i = 0; i < maxPredictions; i++) { // and class labels
-  //           labelContainer.appendChild(document.createElement("div"));
-  //       }
-  //   }
-
-  //   async function loop() {
-  //       webcam.update(); // update the webcam frame
-  //       await predict();
-  //       window.requestAnimationFrame(loop);
-  //   }
-
-  //   // run the webcam image through the image model
-  //   async function predict() {
-  //       // predict can take in an image, video or canvas html element
-  //       const prediction = await model.predict(webcam.canvas);
-  //       for (let i = 0; i < maxPredictions; i++) {
-  //           const classPrediction =
-  //               prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-  //           labelContainer.childNodes[i].innerHTML = classPrediction;
-  //       }
-  //   }
-
-  function predict() {
-    // predict can take in an image, video or canvas html element
-    const prediction = model.predict(webcam.canvas);
-    for (let i = 0; i < maxPredictions; i++) {
-        const classPrediction =
-            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        labelContainer.childNodes[i].innerHTML = classPrediction;
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        // labelContainer = document.getElementById("label-container");
+        // for (let i = 0; i < maxPredictions; i++) { // and class labels
+        //     labelContainer.appendChild(document.createElement("div"));
+        // }
     }
-  }
 
-  function loop() {
-          webcam.update(); // update the webcam frame
-          predict();
-          window.requestAnimationFrame(loop);
-      }
+    async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
 
-
-
-
-  const MyModelComponent = () => {
-    const model = tf.loadLayersModel('https://teachablemachine.withgoogle.com/models/em1KDmjQF/model.json');
-    console.log(model);
-
-    // Convenience function to setup a webcam
-    const flip = true; // whether to flip the webcam
-    const webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-    webcam.setup(); // request access to the webcam
-    webcam.play();
-    window.requestAnimationFrame(loop);    
-  }
+    // run the webcam image through the image model
+    async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
 
 
 
@@ -203,13 +169,10 @@ export default function DashboardApp() {
           <Grid item xs={4}>
             <Card>
               <Box>
-              <div>
-                {MyModelComponent()}
                 <div>Teachable Machine Image Model</div>
-                <button type="button" onclick="init()">Start</button>
+                <button type="button" onclick={init()}>Start</button>
                 <div id="webcam-container"></div>
                 <div id="label-container"></div>
-              </div>
               </Box>
             </Card>
           </Grid>
