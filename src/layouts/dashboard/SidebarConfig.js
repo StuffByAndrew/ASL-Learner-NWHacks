@@ -6,6 +6,7 @@ import fileTextFill from '@iconify/icons-eva/file-text-fill';
 import lockFill from '@iconify/icons-eva/lock-fill';
 import personAddFill from '@iconify/icons-eva/person-add-fill';
 import alertTriangleFill from '@iconify/icons-eva/alert-triangle-fill';
+import infoFill from '@iconify/icons-akar-icons/info-fill';
 
 // ----------------------------------------------------------------------
 
@@ -23,25 +24,25 @@ const sidebarConfig = [
     icon: getIcon(peopleFill)
   },
   {
-    title: 'About',
-    path: '/dashboard/products',
-    icon: getIcon(shoppingBagFill)
-  },  
-  {
     title: 'Resources',
     path: '/dashboard/blog',
     icon: getIcon(fileTextFill)
   },
+  // {
+  //   title: 'login',
+  //   path: '/login',
+  //   icon: getIcon(lockFill)
+  // },
+  // {
+  //   title: 'register',
+  //   path: '/register',
+  //   icon: getIcon(personAddFill)
+  // },
   {
-    title: 'login',
-    path: '/login',
-    icon: getIcon(lockFill)
-  },
-  {
-    title: 'register',
-    path: '/register',
-    icon: getIcon(personAddFill)
-  },
+    title: 'About',
+    path: '/dashboard/products',
+    icon: getIcon(infoFill)
+  },  
   /* {
     title: 'Not found',
     path: '/404',

@@ -59,26 +59,26 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         '& .simplebar-content': { height: '100%', display: 'flex', flexDirection: 'column' }
       }}
     >
-      <Box sx={{ px: 2.5, py: 3 }}>
-        <Box component={RouterLink} to="/" sx={{ display: 'inline-flex' }}>
-          {/* <Logo /> */}
+      <Box sx={{ px: 7, py: 3 }}>
+        <Box component={RouterLink} to="/" sx={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Typography variant="h2" gutterBottom={false} sx={{ left: '10px', color: 'text.primary' }}>jesture</Typography>
         </Box>
       </Box>
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-          <AccountPopover />
+          {/* <AccountPopover /> */}
             <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
+              <Typography variant="h5" sx={{ color: 'text.primary' }}>
+                Hello, {account.displayName}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 {account.role}
               </Typography>
             </Box>
             <div style={{width: 25}}/>
-            <NotificationsPopover />
+            {/* <NotificationsPopover /> */}
           </AccountStyle>
           
         </Link>
