@@ -4,7 +4,8 @@
   border-radius: 50%;
   font-size: 30px;
   border: none;
-  background: slateblue;
+  background: rgb(249,197,141);
+  background: linear-gradient(135deg, rgba(249,197,141,1) 0%, rgba(244,146,240,1) 100%);
   color: white;
   font-size: 100px;
   font-weight: 500;
@@ -41,11 +42,23 @@
   cursor: pointer;
 }
 
-.spacer {
-  margin-top: 50px;
+.spacer1 {
+  margin-top: 0px;
+  margin-bottom: px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.spacer2{
+  margin-top: 0px;
   margin-bottom: 50px;
   display: flex;
   justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subtitle{
+  padding-top: 4px;
 }
 
 .emoji:hover {
