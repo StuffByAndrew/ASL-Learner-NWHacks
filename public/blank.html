@@ -107,8 +107,13 @@
         webcam.update(); // update the webcam frame
         await predict();
 
+<<<<<<< HEAD
+        if (guess["letter"] !== "None" && guess["letter"] === randomElement){
+            guess["correct"] = false;
+=======
         if (guess["letter"] !== "" && guess["letter"] === randomElement){
             guess["correct"] = 1;
+>>>>>>> 1eefbc65af257f41b6a8a847b05a950cae9c5f4a
             randomElement = letters[Math.floor(Math.random() * letters.length)];
             curImg[0].src = "/alphabet/" + randomElement + ".png";
             console.log(randomElement);
@@ -126,11 +131,11 @@
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
         //console.log(labelContainer.childNodes);
-        for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-        }
+        // for (let i = 0; i < maxPredictions; i++) {
+        //     const classPrediction =
+        //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        //     labelContainer.childNodes[i].innerHTML = classPrediction;
+        // }
 
         for (let j = 0; j < maxPredictions; j++) {
             if (prediction[j].probability > max.val) {
