@@ -57,7 +57,8 @@ export default function AppCurrentVisits() {
     legend: { floating: true, horizontalAlign: 'center' },
     dataLabels: { enabled: false, dropShadow: { enabled: true } },
     tooltip: {
-      fillSeriesColor: true,
+      theme: false,
+      fillSeriesColor: false,
       y: {
         formatter: (seriesName) => `${fNumber(seriesName)}%`,
         title: {
@@ -72,7 +73,7 @@ export default function AppCurrentVisits() {
 
   return (
     <Card>
-      <CardHeader title="Progress" />
+      <CardHeader title="⌛ Progress ⌛" />
       <ChartWrapperStyle dir="ltr">
         <ReactApexChart type="donut" series={CHART_DATA} options={chartOptions} height={280} />
       </ChartWrapperStyle>

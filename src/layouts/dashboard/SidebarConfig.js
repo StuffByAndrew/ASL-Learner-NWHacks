@@ -22,11 +22,11 @@ const sidebarConfig = [
     path: '/dashboard/user',
     icon: getIcon(peopleFill)
   },
-  /* {
-    title: 'product',
+  {
+    title: 'About',
     path: '/dashboard/products',
     icon: getIcon(shoppingBagFill)
-  }, */ 
+  },  
   {
     title: 'Resources',
     path: '/dashboard/blog',

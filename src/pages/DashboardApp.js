@@ -14,7 +14,8 @@ import {
   AppWebsiteVisits,
   AppTrafficBySite,
   AppCurrentSubject,
-  AppConversionRates
+  AppConversionRates,
+  Leaderboards
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -24,7 +25,7 @@ export default function DashboardApp() {
     <Page title="Learn">
       <Container maxWidth="xl" >
         <Box sx={{ pb: 5 }}>
-          <Typography variant="h4">Hi, Welcome back</Typography>
+          <Typography variant="h4"> </Typography>
         </Box>
         <Grid container spacing={3}>
           {/* <Grid item xs={12} sm={6} md={3}>
@@ -47,6 +48,8 @@ export default function DashboardApp() {
             <AppCurrentVisits />
             <div style={{height:20}}/>
             <AppWebsiteVisits />
+            <div style={{height:20}}/>
+            <Leaderboards/>
           </Grid>
 
           {/* <Grid item xs={12} md={6} lg={8}>

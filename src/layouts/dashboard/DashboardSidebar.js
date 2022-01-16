@@ -12,7 +12,8 @@ import { MHidden } from '../../components/@material-extend';
 //
 import sidebarConfig from './SidebarConfig';
 import account from '../../_mocks_/account';
-
+import AccountPopover from './AccountPopover';
+import NotificationsPopover from './NotificationsPopover';
 // ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 280;
@@ -67,7 +68,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            <Avatar src={account.photoURL} alt="photoURL" />
+          <AccountPopover />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                 {account.displayName}
@@ -76,7 +77,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
                 {account.role}
               </Typography>
             </Box>
+            <div style={{width: 25}}/>
+            <NotificationsPopover />
           </AccountStyle>
+          
         </Link>
       </Box>
 
