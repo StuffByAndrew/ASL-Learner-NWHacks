@@ -23,6 +23,7 @@ const RootStyle = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     flexShrink: 0,
     width: DRAWER_WIDTH,
+    marginTop: '80px',
     background: 'rgb(0,0,0)'
   }
 }));
