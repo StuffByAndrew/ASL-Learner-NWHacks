@@ -23,7 +23,9 @@
     const URL = "https://storage.googleapis.com/tm-model/Pn5IlkF1b/";
 
     let model, webcam, labelContainer, maxPredictions;
-    let max;
+    let max = {};
+    max.name = "Empty";
+    max.val = "0.1";
 
     // Load the image model and setup the webcam
     async function init() {
@@ -62,11 +64,18 @@
     async function predict() {
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
-        console.log(labelContainer.childNodes);
+        // console.log(labelContainer.childNodes);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
             labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+
+        for (let j = 0; j < prediction.length; j++) {
+            if (prediction[j] > max.val) {
+                max.val = prediction[j];
+                max.name = prediction.className;
+            }
         }
     }
 </script>
