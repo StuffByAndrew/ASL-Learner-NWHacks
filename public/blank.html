@@ -15,11 +15,14 @@
   </head>
   <!-- ######################################################################################### -->
   <body>
-    <div class=sidebar></div>
+    
     <div class="container">
         <video class="input_video"></video>
+        <!-- <canvas class="cover"></canvas> -->
         <canvas class="output_canvas"></canvas>
     </div>
+    <!-- <div class="cover"></div> -->
+    <div class=sidebar></div>   
     <!-- <button type="button" onclick="init()">Start</button> -->
     <div id="webcam-container"></div>
     <div id="label-container"></div>
@@ -32,7 +35,8 @@
     // the link to your model provided by Teachable Machine export panel
     const URL = "https://storage.googleapis.com/tm-model/Pn5IlkF1b/";
 
-    const threshold = 0.25;
+    const threshold = 0.15;
+    const count_threshold = 15; //number of frames to be considered signed
     let model, webcam, labelContainer, maxPredictions;
     let max = {};
     max.name = "None";
@@ -54,13 +58,13 @@
 
         // Convenience function to setup a webcam
         const flip = true; // whether to flip the webcam
-        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        webcam = new tmImage.Webcam(300, 300, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         await webcam.play();
         window.requestAnimationFrame(loop);
 
         // append elements to the DOM
-        // document.getElementById("webcam-container").appendChild(webcam.canvas);
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
         labelContainer = document.getElementById("label-container");
         for (let i = 0; i < maxPredictions; i++) { // and class labels
             labelContainer.appendChild(document.createElement("div"));
@@ -95,7 +99,7 @@
         } else {
             max.count = 0;
         }
-        if (max.name !== "None" && max.count > 20) {
+        if (max.name !== "None" && max.count > count_threshold) {
             console.log(max.name)
         }
 
@@ -109,11 +113,16 @@
         const canvasElement = document.getElementsByClassName('output_canvas')[0];
         const canvasCtx = canvasElement.getContext('2d');
         
+        // const coverElement = document.getElementsByClassName('cover')[0];
+        // const coverCtx = coverElement.getContext('2d');
+        
         function onResults(results) {
           canvasCtx.save();
           canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
           canvasCtx.drawImage(
               results.image, 0, 0, canvasElement.width, canvasElement.height);
+          canvasCtx.fillStyle = "rgba(0, 0, 0, 0.6)";
+          canvasCtx.fillRect(0, 0, 1000, 1000);
           if (results.multiHandLandmarks) {
             for (const landmarks of results.multiHandLandmarks) {
               drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS,
