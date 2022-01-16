@@ -85,7 +85,7 @@
         webcam.update(); // update the webcam frame
         await predict();
 
-        if (guess["letter"] !== ""){
+        if (guess["letter"] !== "" && guess["letter"] === randomElement){
             guess["correct"] = 1;
             randomElement = letters[Math.floor(Math.random() * letters.length)];
         }
