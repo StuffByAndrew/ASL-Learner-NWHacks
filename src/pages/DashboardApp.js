@@ -1,11 +1,10 @@
 import { Link as RouterLink} from "react-router-dom";
-<<<<<<< HEAD
 import Webcam from "react-webcam";
 import React, { useEffect, useState, useRef } from "react";
 import { useModel } from 'react-tensorflow'
-=======
->>>>>>> 1a1fd6584cedd5d170323636783e9fe4369489cd
 import './tree.css';
+import * as tf from '@tensorflow/tfjs';
+import * as tmImage from '@teachablemachine/image';
 // material
 import { Box, Grid, Container, Typography, Card, CardHeader, Link, Button } from '@mui/material';
 // components
@@ -28,8 +27,10 @@ import {
 
 // ----------------------------------------------------------------------
 
+
+
+
 export default function DashboardApp() {
-<<<<<<< HEAD
 
   
   let model, labelContainer, maxPredictions, webcam;
@@ -100,8 +101,7 @@ export default function DashboardApp() {
 
 
 
-=======
->>>>>>> 1a1fd6584cedd5d170323636783e9fe4369489cd
+
   return (
     <Page title="Learn">
       <Container maxWidth="xl" >
@@ -124,26 +124,19 @@ export default function DashboardApp() {
 
           <Grid item xs={8}>
           <Card>
-            <CardHeader title="🚗 Roadmap 🚗" />
+            <CardHeader title="Roadmap" />
             <Box>
                 <div className="tree">
-                    {/* <div className="spacer">
-                      <Link className="emoji" component={RouterLink} to="/blank.html" >
-                        <button className="start_btn">
-                          <span role="img" aria-label="wave">👋</span>
-                        </button>
-                      </Link>
-                    </div> */}
-
-                    <div className="spacer">
+                <div className="spacer">
                       <a className="emoji" href="../blank.html">
                         <button className="start_btn">
                           <span role="img" aria-label="wave">👋</span>
                         </button>
                       </a>
                     </div>
-                 
-                    
+                    <div>
+                      <a href="blank.html">click here</a>
+                    </div>
                     <div className="spacer">
                     <button className="btn">
                     <span role="img" aria-label="person">🧍</span>
@@ -177,7 +170,6 @@ export default function DashboardApp() {
             <div style={{height:20}}/>
             <Leaderboards/>
           </Grid>
-<<<<<<< HEAD
           <Grid item xs={4}>
             <Card>
               <Box>
@@ -188,8 +180,6 @@ export default function DashboardApp() {
               </Box>
             </Card>
           </Grid>
-=======
->>>>>>> 1a1fd6584cedd5d170323636783e9fe4369489cd
 
           {/* <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates />
