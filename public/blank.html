@@ -79,6 +79,7 @@
     // Load the image model and setup the webcam
     async function init() {
       // console.log(curImg);
+
       curImg[0].src = "/alphabet/" + randomElement + ".png";
 
         const modelURL = URL + "model.json";
@@ -169,7 +170,7 @@
             document.getElementById("randomE").innerHTML = "";
 
             //add delay
-            delay(1000).then(() => console.log('ran after 1 second1 passed'));
+            await delay(1000);
 
             randomElement = letters[Math.floor(Math.random() * letters.length)];
             console.log(randomElement)
