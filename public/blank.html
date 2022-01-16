@@ -15,16 +15,6 @@
   </head>
   <!-- ######################################################################################### -->
   <body>
-<<<<<<< HEAD
-	<div>Teachable Machine Image Model</div>
-<button type="button" onclick="init()">Start</button>
-<div></div>
-<div id="webcam-container"></div>
-<div id="label-container"></div>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-<script type="text/javascript">
-=======
     <div class=sidebar></div>
     <div class="container">
         <video class="input_video"></video>
@@ -36,7 +26,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
->>>>>>> fba00cbcea708c482bf6073a7de8f28c0e7f4a50
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
@@ -101,9 +90,6 @@
                 max.name = prediction[j].className;
             }
         }
-<<<<<<< HEAD
-
-=======
         if (max.name === max.prev) {
             max.count++;
         } else {
@@ -116,7 +102,6 @@
         max.prev = max.name
         max.name = "None";
         max.val = threshold;
->>>>>>> fba00cbcea708c482bf6073a7de8f28c0e7f4a50
     }
     </script>
     <script type="module">
