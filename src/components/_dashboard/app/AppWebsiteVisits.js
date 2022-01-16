@@ -11,7 +11,8 @@ const CHART_DATA = [
   {
     name: 'Signs practiced',
     type: 'line',
-    data: [44, 55, 41, 67, 22, 43, 21]
+    data: [44, 55, 41, 67, 22, 43, 21],
+    color: '#f492f0'
   }
 ];
 
