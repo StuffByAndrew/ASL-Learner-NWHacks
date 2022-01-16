@@ -99,8 +99,13 @@
         webcam.update(); // update the webcam frame
         await predict();
 
+<<<<<<< HEAD
         if (guess["letter"] !== "None" && guess["letter"] === randomElement){
             guess["correct"] = false;
+=======
+        if (guess["letter"] !== "" && guess["letter"] === randomElement){
+            guess["correct"] = 1;
+>>>>>>> 634484013f69cc1fd1b899f18c06ff6399b5b72f
             randomElement = letters[Math.floor(Math.random() * letters.length)];
             console.log(randomElement)
         }
