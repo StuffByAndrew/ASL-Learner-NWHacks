@@ -1,6 +1,6 @@
 import { Link as RouterLink} from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useModel } from 'react-tensorflow'
+import { useModel } from 'react-tensorflow';
 import './tree.css';
 import * as tf from '@tensorflow/tfjs';
 import * as tmImage from '@teachablemachine/image';
@@ -31,24 +31,24 @@ import {
 
 export default function DashboardApp() {
 
-  // useEffect(() => {
-  //   const script1 = document.createElement('script');
-  //   const script2 = document.createElement('script');
+  useEffect(() => {
+    const script1 = document.createElement('script');
+    const script2 = document.createElement('script');
   
-  //   script1.src = "https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js";
-  //   script2.src = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js";
+    script1.src = "https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js";
+    script2.src = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js";
   
-  //   script1.async = true;
-  //   script2.async = true;
+    script1.async = true;
+    script2.async = true;
   
-  //   document.body.appendChild(script1);
-  //   document.body.appendChild(script2);
+    document.body.appendChild(script1);
+    document.body.appendChild(script2);
   
-  //   return () => {
-  //     document.body.removeChild(script1);
-  //     document.body.removeChild(script2);
-  //   }
-  // }, []);
+    return () => {
+      document.body.removeChild(script1);
+      document.body.removeChild(script2);
+    }
+  }, []);
 
   //   // the link to your model provided by Teachable Machine export panel
   //   // const URL = "../../public/tm-my-image-model/";
@@ -122,24 +122,15 @@ export default function DashboardApp() {
 
 
   const MyModelComponent = () => {
-    const model = useModel({ modelUrl: "https://teachablemachine.withgoogle.com/models/em1KDmjQF" })
+    const model = tf.loadLayersModel('https://teachablemachine.withgoogle.com/models/em1KDmjQF/model.json');
     console.log(model);
-    maxPredictions = model.getTotalClasses();
 
-          // Convenience function to setup a webcam
-          const flip = true; // whether to flip the webcam
-          webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-          webcam.setup(); // request access to the webcam
-          webcam.play();
-          window.requestAnimationFrame(loop);
-  
-          // append elements to the DOM
-          document.getElementById("webcam-container").appendChild(webcam.canvas);
-          labelContainer = document.getElementById("label-container");
-          for (let i = 0; i < maxPredictions; i++) { // and class labels
-              labelContainer.appendChild(document.createElement("div"));
-          }
-    
+    // Convenience function to setup a webcam
+    const flip = true; // whether to flip the webcam
+    const webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+    webcam.setup(); // request access to the webcam
+    webcam.play();
+    window.requestAnimationFrame(loop);    
   }
 
 
@@ -214,6 +205,10 @@ export default function DashboardApp() {
               <Box>
               <div>
                 {MyModelComponent()}
+                <div>Teachable Machine Image Model</div>
+                <button type="button" onclick="init()">Start</button>
+                <div id="webcam-container"></div>
+                <div id="label-container"></div>
               </div>
               </Box>
             </Card>
