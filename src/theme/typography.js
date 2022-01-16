@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------
-import "@fontsource/quicksand"
+// import "@fontsource/quicksand"
 
 function pxToRem(value) {
   return `${value / 16}rem`;
