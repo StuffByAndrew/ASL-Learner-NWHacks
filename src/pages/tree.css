@@ -1,18 +1,48 @@
-.btn {
+.start_btn {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  font-size: 30px;
   border: none;
   background: slateblue;
   color: white;
-  font-size: 20px;
+  font-size: 100px;
   font-weight: 500;
   line-height: 1;
   will-change: transform;
   transition: transform 450ms;
 }
 
+
+.btn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  font-size: 30px;
+  border: none;
+  background: slateblue;
+  color: white;
+  font-size: 100px;
+  font-weight: 500;
+  line-height: 1;
+  will-change: transform;
+  transition: transform 450ms;
+  filter: grayscale(100%);
+}
+
 .btn:hover {
   transition: transform 125ms;
   transform: translateY(-10px);
+}
+
+.start_btn:hover {
+  transition: transform 125ms;
+  transform: translateY(-10px);
+}
+
+.spacer {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-evenly;
 }

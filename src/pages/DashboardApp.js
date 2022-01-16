@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link as RouterLink} from "react-router-dom";
 import './tree.css';
 // material
-import { Box, Grid, Container, Typography, Card, CardHeader } from '@mui/material';
+import { Box, Grid, Container, Typography, Card, CardHeader, Link } from '@mui/material';
 // components
 import Page from '../components/Page';
 import {
@@ -47,15 +47,33 @@ export default function DashboardApp() {
             <CardHeader title="Roadmap" />
             <Box>
                 <div className="tree">
+                  <div className="spacer">
+                    <button className="start_btn">
+                    <Link component={RouterLink} to="/sign" />
+                    <span role="img" aria-label="wave">👋</span>
+                    </button>
+                    </div>
+                    <div className="spacer">
                     <button className="btn">
-                        Hello World
+                    <span role="img" aria-label="person">🧍</span>
+                    </button>
+                    </div>
+                    <div className="spacer">
+                    <button className="btn">
+                    <span role="img" aria-label="cat">🐈</span>
                     </button>
                     <button className="btn">
-                        Hello World
+                    <span role="img" aria-label="burger">🍔</span>
+                    </button>
+                    </div>
+                    <div className="spacer">
+                    <button className="btn">
+                    <span role="img" aria-label="car">🚗</span>
                     </button>
                     <button className="btn">
-                        Hello World
+                    <span role="img" aria-label="house">🏠</span>
                     </button>
+                    </div>
                 </div>
             </Box>
         </Card>
