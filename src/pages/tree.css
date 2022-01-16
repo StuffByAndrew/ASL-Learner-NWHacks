@@ -38,6 +38,7 @@
 .start_btn:hover {
   transition: transform 125ms;
   transform: translateY(-10px);
+  cursor: pointer;
 }
 
 .spacer {
@@ -45,6 +46,10 @@
   margin-bottom: 50px;
   display: flex;
   justify-content: space-evenly;
+}
+
+.emoji:hover {
+  cursor: default;
 }
 
 .map_text {
