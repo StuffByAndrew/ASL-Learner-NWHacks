@@ -31,7 +31,7 @@ const AccountStyle = styled('div')(({ theme }) => ({
   alignItems: 'center',
   padding: theme.spacing(2, 2.5),
   borderRadius: theme.shape.borderRadiusSm,
-  background: 'linear-gradient(90deg, rgba(249,197,141,1) 0%, rgba(248,187,161,1) 100%, rgba(244,146,240,1) 100%)'
+  /* background: 'linear-gradient(90deg, rgba(249,197,141,1) 0%, rgba(248,187,161,1) 100%, rgba(244,146,240,1) 100%)' */
 }));
 
 // ----------------------------------------------------------------------
@@ -64,7 +64,21 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         </Box>
       </Box>
 
-     
+      <Box sx={{ mb: 5, mx: 2.5 }}>
+        <Link underline="none" component={RouterLink} to="#">
+          <AccountStyle>
+            <Avatar src={account.photoURL} alt="photoURL" />
+            <Box sx={{ ml: 2 }}>
+              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+                {account.displayName}
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {account.role}
+              </Typography>
+            </Box>
+          </AccountStyle>
+        </Link>
+      </Box>
 
       <NavSection navConfig={sidebarConfig} />
 
