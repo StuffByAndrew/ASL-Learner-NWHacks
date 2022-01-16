@@ -34,7 +34,7 @@
     <div id="webcam-container"></div>
     <div id="label-container"></div>
     <div id="alphabet_container">
-        <img src="https://i.imgur.com/wDqv3FO.png" width="200", height="200">
+        <img src="" width="200", height="200">
         <div id="randomE">
 
         </div>
@@ -74,8 +74,8 @@
 
     // Load the image model and setup the webcam
     async function init() {
-
-      curImg.src = "/alphabet/" + randomElement + ".png";
+      // console.log(curImg);
+      curImg[0].src = "/alphabet/" + randomElement + ".png";
 
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
@@ -104,18 +104,13 @@
     window.addEventListener("load", init)
     async function loop() {
 
-        if (change) {
-          curImg.src = "/alphabet/" + randomElement + ".png";
-          change = 0;
-        }
-
-
         webcam.update(); // update the webcam frame
         await predict();
 
         if (guess["letter"] !== "" && guess["letter"] === randomElement){
             guess["correct"] = 1;
             randomElement = letters[Math.floor(Math.random() * letters.length)];
+            curImg[0].src = "/alphabet/" + randomElement + ".png";
             console.log(randomElement);
             change = 1;
         }
