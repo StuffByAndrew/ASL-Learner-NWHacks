@@ -33,12 +33,14 @@
     <!-- <button type="button" onclick="init()">Start</button> -->
     <div id="webcam-container"></div>
     <div id="label-container"></div>
+    
     <div id="alphabet_container">
-        <img src="" width="200", height="200">
+        <img src="" width="350", height="350">
         <div id="randomE">
 
         </div>
     </div>
+    
     <a class="wrapper" href="/dashboard/app">
     <span class="iconify" data-icon="uil:arrow-circle-left" style="color: white;" data-width="75" data-height="75"></span>
     </a>
@@ -64,6 +66,9 @@
     let randomElement = letters[Math.floor(Math.random() * letters.length)];
     console.log(randomElement)
     document.getElementById("randomE").innerHTML=randomElement;
+
+    // document.getElementsByClassName("sidebar").innerHTML = "<img src='/static/correct.png'>"
+    // document.getElementsByClassName("sidebar").innerHTML = oldHTML;
   
 
 
@@ -118,6 +123,12 @@
         window.requestAnimationFrame(loop);
     }
 
+
+    function delay(time) {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+
+
     // run the webcam image through the image model
     async function predict() {
         // predict can take in an image, video or canvas html element
@@ -153,10 +164,22 @@
         }
         if ((max.name) === randomElement) {
             console.log("Correct")
+
+            curImg[0].src = "/static/correct.png";
+            document.getElementById("randomE").innerHTML = "";
+
+            //add delay
+            delay(1000).then(() => console.log('ran after 1 second1 passed'));
+
             randomElement = letters[Math.floor(Math.random() * letters.length)];
             console.log(randomElement)
             document.getElementById("randomE").innerHTML=randomElement;
             curImg[0].src = "/alphabet/" + randomElement + ".png";
+
+            var oldHTML = document.getElementsByClassName("sidebar").innerHTML;
+
+            // document.getElementsByClassName("sidebar").innerHTML = "<img src='/static/correct.png'>"
+            // document.getElementsByClassName("sidebar").innerHTML = oldHTML;
         }
         max.prev = max.name
         max.name = "None";
