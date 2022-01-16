@@ -126,33 +126,76 @@ export default function DashboardApp() {
             <CardHeader title="Roadmap" />
             <Box>
                 <div className="tree">
-                <div className="spacer">
-                      <a className="emoji" href="../blank.html">
-                        <button className="start_btn">
-                          <span role="img" aria-label="wave">👋</span>
-                        </button>
-                      </a>
+                  <div className="spacer1">
+                      <div className="spacer2">
+                        <a className="emoji" href="../blank.html">
+                          <button className="start_btn">
+                            <span role="img" aria-label="wave">👋</span>
+                          </button>
+                        </a>
+                        <div className="subtitle"> 
+                          <Typography variant="h4" gutterBottom={false} sx={{ left: '10px', color: 'text.primary' }}>
+                            Basics
+                          </Typography>
+                        </div>
+                      </div>
+                  </div>
+                  
+                  <div className="spacer1">
+                    <div className="spacer2">
+                    <button className="btn">
+                      <span role="img" aria-label="person">🧍</span>
+                    </button>
+                    <div className="subtitle"> 
+                          <Typography variant="h4" gutterBottom={false} sx={{ left: '10px', color: 'text.primary' }}>
+                            People
+                          </Typography>
+                        </div>
                     </div>
-                    <div className="spacer">
+                  </div>
+                  <div className="spacer1">
+                    <div className="spacer2">
                     <button className="btn">
-                    <span role="img" aria-label="person">🧍</span>
+                      <span role="img" aria-label="cat">🐈</span>
                     </button>
+                    <div className="subtitle"> 
+                          <Typography variant="h4" gutterBottom={false} sx={{ left: '10px', color: 'text.primary' }}>
+                            Animals
+                          </Typography>
+                        </div>
+                      </div>
+                      <div className="spacer2">
+                    <button className="btn">
+                      <span role="img" aria-label="burger">🍔</span>
+                    </button>
+                    <div className="subtitle"> 
+                          <Typography variant="h4" gutterBottom={false} sx={{ left: '10px', color: 'text.primary' }}>
+                            Food
+                          </Typography>
+                        </div>
                     </div>
-                    <div className="spacer">
-                    <button className="btn">
-                    <span role="img" aria-label="cat">🐈</span>
-                    </button>
-                    <button className="btn">
-                    <span role="img" aria-label="burger">🍔</span>
-                    </button>
+                  </div>
+                  <div className="spacer1">
+                  <div className="spacer2">
+                  <button className="btn">
+                  <span role="img" aria-label="car">🚗</span>
+                  </button>
+                  <div className="subtitle"> 
+                          <Typography variant="h4" gutterBottom={false} sx={{ left: '10px', color: 'text.primary' }}>
+                            Transportation
+                          </Typography>
+                        </div>
                     </div>
-                    <div className="spacer">
-                    <button className="btn">
-                    <span role="img" aria-label="car">🚗</span>
-                    </button>
-                    <button className="btn">
-                    <span role="img" aria-label="house">🏠</span>
-                    </button>
+                    <div className="spacer2">
+                  <button className="btn">
+                  <span role="img" aria-label="house">🏠</span>
+                  </button>
+                  <div className="subtitle"> 
+                          <Typography variant="h4" gutterBottom={false} sx={{ left: '10px', color: 'text.primary' }}>
+                            Household
+                          </Typography>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </Box>

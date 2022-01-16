@@ -38,6 +38,20 @@ video {
     background: rgb(249,197,141);
     background: linear-gradient(90deg, rgba(249,197,141,1) 0%, rgba(244,146,240,1) 100%);
 }
-canvas {
-    background: rgba(20,20,20,0.4);
+
+.iconify {
+    position: absolute;
+    top: 25px;
+    left: 25px;
 }
+
+.iconify:hover {
+    cursor: pointer;
+}
+
+.wrapper:hover {
+    cursor: default;
+}
+
+
+
