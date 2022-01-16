@@ -64,12 +64,19 @@
     let randomElement = letters[Math.floor(Math.random() * letters.length)];
     console.log(randomElement)
     document.getElementById("randomE").innerHTML=randomElement;
+  
 
 
     const guess = {"letter": "None", "correct": false};
+    var imgDiv = document.getElementById("alphabet_container");
+    var curImg = imgDiv.getElementsByTagName("img");
+    var change = 0;
 
     // Load the image model and setup the webcam
     async function init() {
+
+      curImg.src = "/alphabet/" + randomElement + ".png";
+
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
@@ -96,13 +103,26 @@
     }
     window.addEventListener("load", init)
     async function loop() {
+
+        if (change) {
+          curImg.src = "/alphabet/" + randomElement + ".png";
+          change = 0;
+        }
+
+
         webcam.update(); // update the webcam frame
         await predict();
 
+<<<<<<< HEAD
         if (guess["letter"] !== "None" && guess["letter"] === randomElement){
             guess["correct"] = false;
+=======
+        if (guess["letter"] !== "" && guess["letter"] === randomElement){
+            guess["correct"] = 1;
+>>>>>>> 1eefbc65af257f41b6a8a847b05a950cae9c5f4a
             randomElement = letters[Math.floor(Math.random() * letters.length)];
-            console.log(randomElement)
+            console.log(randomElement);
+            change = 1;
         }
         else {
             guess["correct"] = false;
