@@ -17,10 +17,7 @@ import {
   AppTrafficBySite,
   AppCurrentSubject,
   AppConversionRates,
-<<<<<<< HEAD
   Leaderboards
-=======
->>>>>>> dbcfecc8b5ac931572790c0a2c3ab341d073bb86
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
