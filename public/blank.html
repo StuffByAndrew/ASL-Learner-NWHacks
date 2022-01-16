@@ -48,6 +48,12 @@
     max.count = 0
     max.prev = "None"
 
+    const letters = ['H', 'I'];
+    const randomElement = letters[Math.floor(Math.random() * letters.length)];
+
+
+    const guees = {"letter": "None", "correct": 0};
+
     // Load the image model and setup the webcam
     async function init() {
         const modelURL = URL + "model.json";
@@ -78,6 +84,14 @@
     async function loop() {
         webcam.update(); // update the webcam frame
         await predict();
+
+        if (guess["letter"] !== ""){
+            guess["correct"] = 1;
+        }
+        else {
+            guess["correct"] = 0;
+        }
+
         window.requestAnimationFrame(loop);
     }
 
@@ -105,6 +119,9 @@
         }
         if (max.name !== "None" && max.count > count_threshold) {
             console.log(max.name)
+            guess["letter"] = max.name;
+        } else {
+            guess["letter"] = "";
         }
 
         max.prev = max.name
