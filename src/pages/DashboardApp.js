@@ -40,8 +40,12 @@ export default function DashboardApp() {
             <AppBugReports />
           </Grid> */}
 
-          <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={4} md={4} lg={4}>
             <AppWebsiteVisits />
+          </Grid>
+
+          <Grid item xs={4}>
+            <div/>
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
@@ -50,7 +54,7 @@ export default function DashboardApp() {
 
           {/* <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates />
-          </Grid> */}
+          </Grid> 
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentSubject />
@@ -70,7 +74,7 @@ export default function DashboardApp() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppTasks />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>

@@ -11,7 +11,7 @@ const CHART_DATA = [
   {
     name: 'Team B',
     type: 'line',
-    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
+    data: [44, 55, 41, 67, 22, 43, 21]
   }
 ];
 
