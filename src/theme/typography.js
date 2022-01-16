@@ -1,9 +1,5 @@
 // ----------------------------------------------------------------------
-<<<<<<< HEAD
-// import "@fontsource/quicksand"
-=======
-import "@fontsource/quicksand";
->>>>>>> 22079d88fe67c341b08f4febd2fb21d5c8c341d9
+import "@fontsource/quicksand"
 
 function pxToRem(value) {
   return `${value / 16}rem`;
