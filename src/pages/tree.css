@@ -46,3 +46,7 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.map_text {
+  font-size: 30px;
+}
